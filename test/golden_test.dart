@@ -23,18 +23,18 @@ void main() {
     await loader.load();
   });
 
-  /// category id -> (spec, theme, space-separated sample value)
+  /// category id -> (spec, theme, `|`-separated, one per slot sample value)
   final Map<String, (PlateSpec, PlateTheme, String)> cases =
       <String, (PlateSpec, PlateTheme, String)>{
         'private': (
           NorwayPlates.private,
           NorwayThemes.private,
-          'E L 1 4 3 2 5',
+          'EL|14325',
         ),
         'diplomatic': (
           NorwayPlates.diplomatic,
           NorwayThemes.diplomatic,
-          'C D 5 3 0 9 4',
+          'CD|53|094',
         ),
       };
 
@@ -44,7 +44,7 @@ void main() {
       final (PlateSpec spec, PlateTheme theme, String values) = c.value;
       final PlateController controller = PlateController.fromValues(
         spec,
-        values.split(' '),
+        values.split('|'),
       );
       await tester.pumpWidget(
         MaterialApp(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart' show EdgeInsets;
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
@@ -76,13 +78,13 @@ abstract final class NorwayPlates {
       id: 'no.private.$digits',
       stripe: true,
       slots: <PlateSlot>[
-        ..._group(
+        _group(
           NorwayAlphabets.letters,
           2,
           _Layout.letterCx,
           _Layout.letterPitch,
         ),
-        ..._group(
+        _group(
           NorwayAlphabets.digits,
           digits,
           _Layout.lastDigitCx - (digits - 1) * _Layout.digitPitch,
@@ -90,10 +92,8 @@ abstract final class NorwayPlates {
         ),
       ],
       groups: <PlateTextGroup>[
-        const PlateTextGroup(<int>[0, 1], key: 'letters'),
-        PlateTextGroup(<int>[
-          for (int i = 0; i < digits; i++) 2 + i,
-        ], key: 'number'),
+        const PlateTextGroup(<int>[0], key: 'letters'),
+        const PlateTextGroup(<int>[1], key: 'number'),
       ],
     );
   }
@@ -103,41 +103,45 @@ abstract final class NorwayPlates {
   static final PlateSpec diplomatic = _spec(
     id: 'no.diplomatic',
     slots: <PlateSlot>[
-      ..._group(
+      _group(
         NorwayAlphabets.diplomaticLetters,
         2,
         _Layout.dipLetterCx,
         _Layout.dipLetterPitch,
       ),
-      ..._group(
+      _group(
         NorwayAlphabets.digits,
-        5,
+        2,
         _Layout.dipDigitCx,
+        _Layout.dipDigitPitch,
+      ),
+      _group(
+        NorwayAlphabets.digits,
+        3,
+        _Layout.dipDigitCx + 2 * _Layout.dipDigitPitch,
         _Layout.dipDigitPitch,
       ),
     ],
     groups: const <PlateTextGroup>[
-      PlateTextGroup(<int>[0, 1], key: 'code'),
-      PlateTextGroup(<int>[2, 3], key: 'embassy'),
-      PlateTextGroup(<int>[4, 5, 6], key: 'number'),
+      PlateTextGroup(<int>[0], key: 'code'),
+      PlateTextGroup(<int>[1], key: 'embassy'),
+      PlateTextGroup(<int>[2], key: 'number'),
     ],
     restrictions: const <PlateRestriction>[israel],
   );
 
   static List<PlateSpec> get all => <PlateSpec>[private, diplomatic];
 
-  static List<PlateSlot> _group(
+  static PlateSlot _group(
     PlateAlphabet alphabet,
     int count,
     double firstCx,
     double pitch,
-  ) => plateRegister(
+  ) => PlateSlot(
     alphabet: alphabet,
-    count: count,
-    left: firstCx - pitch / 2,
-    top: _Layout.top,
-    width: pitch,
-    height: _Layout.box,
+    box: PlateBox(firstCx - pitch / 2, _Layout.top, count * pitch, _Layout.box),
+    length: count,
+    spacing: max(0, pitch - 0.6 * 0.72 * _Layout.box),
   );
 
   static PlateSpec _spec({
