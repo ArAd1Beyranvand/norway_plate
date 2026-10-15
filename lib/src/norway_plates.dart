@@ -6,6 +6,7 @@ import 'package:plate_core/plate_core.dart';
 
 import 'norway_colors.dart';
 import 'norway_country.dart';
+import 'norway_regions.dart';
 
 /// Where the ink sits, in plate units. Every reference is flattened to the
 /// 520×110 the article gives (4 px per unit) and projected onto each axis.
@@ -192,6 +193,7 @@ abstract final class NorwayPlates {
         ),
     ],
     textGroups: groups,
+    resolveRegion: NorwayRegions.captionOf,
     restrictions: restrictions,
   );
 }

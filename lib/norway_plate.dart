@@ -7,5 +7,6 @@ export 'src/norway_colors.dart';
 export 'src/norway_country.dart';
 export 'src/norway_themes.dart';
 export 'src/norway_plates.dart';
+export 'src/norway_regions.dart';
 export 'src/norway_validators.dart';
 export 'package:plate_alphabet/plate_alphabet.dart' show NorwayAlphabets;
