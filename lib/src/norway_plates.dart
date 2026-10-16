@@ -8,8 +8,7 @@ import 'norway_colors.dart';
 import 'norway_country.dart';
 import 'norway_regions.dart';
 
-/// Where the ink sits, in plate units. Every reference is flattened to the
-/// 520×110 the article gives (4 px per unit) and projected onto each axis.
+/// Plate units measured off references flattened to 520×110 (4 px per unit).
 ///
 /// Stripe (`Skilt_elbil`): blue x 0–51.75, so the section ends at 52 under the
 /// frame; flag x 7.8–44.8, y 16–44 (22:16); white `N` x 17–36, y 73–90 (cap 17).
@@ -22,9 +21,8 @@ import 'norway_regions.dart';
 /// Diplomatic (`CD_license_plate_of_Norway`): `CD` centred 57.8 and 118.0; five
 /// digits at 232.1, 289.6, 347.9, 404.9, 461.6 (pitch 57.4); ink y 14–95.
 ///
-/// Ink is about 75 tall on a 110 plate; a box that tall would need ~135, so
-/// every box is the full canvas height and the ink lands near 58, about 78% of
-/// reference.
+/// Ink is about 75 tall on a 110 plate; matching it would need a ~135 box, so
+/// every box is the canvas height and the ink lands near 58 (78% of reference).
 abstract final class _Layout {
   static const double width = 520, height = 110;
   static const double stripeEnd = 52;
@@ -43,17 +41,14 @@ abstract final class _Layout {
   static const double dipDigitCx = 232.1, dipDigitPitch = 57.4;
 }
 
-/// The Norwegian plates. Groups `letters`, `number` on a regular plate;
-/// `code`, `embassy`, `number` on a diplomatic one.
+/// Groups `letters`, `number` on a regular plate; `code`, `embassy`, `number`
+/// on a diplomatic one.
 ///
-/// [private] is `AB 12345`, black on white with the blue nationality stripe;
 /// [privateFor] gives the four-digit form (motorcycles, trailers). [electric]
-/// is the same design with an `EL`-style prefix, so it is [private]. The
-/// [diplomatic] plate (`CD 53 094`) pairs with [NorwayThemes.diplomatic].
+/// is the same design with an `EL`-style prefix, so it is [private].
 ///
-/// Embassy code 44 is Israel's in the article's table and is refused with
-/// [NorwayPlates.israel] on the diplomatic spec, reason `COUNTRY NOT FOUND`,
-/// in the controller, input machine, validator and canvas.
+/// Embassy code 44 is refused on the diplomatic spec by [israel] with reason
+/// `COUNTRY NOT FOUND`.
 ///
 /// Not implemented, for lack of a measured reference: the black, orange,
 /// green, red and export classes the prose lists, and the 1913–1971 single
@@ -70,7 +65,7 @@ abstract final class NorwayPlates {
 
   static final PlateSpec private = privateFor(5);
 
-  /// A regular plate with [digits] (4 or 5) digits.
+  /// [digits] is 4 or 5.
   static PlateSpec privateFor(int digits) {
     if (digits < 4 || digits > 5) {
       throw ArgumentError.value(digits, 'digits', 'Four or five');

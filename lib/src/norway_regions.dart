@@ -1,5 +1,3 @@
-import 'package:plate_core/plate_core.dart';
-
 /// Names the county from the two registration letters.
 ///
 /// Source: the "Registration series" table in
@@ -423,7 +421,6 @@ abstract final class NorwayRegions {
     return names.length == 1 ? names.single : null;
   }
 
-  /// A [PlateLabelResolver] for [PlateSpec.resolveRegion].
   static String? captionOf(String Function(String key) group) =>
       lookup(group('letters'));
 }
