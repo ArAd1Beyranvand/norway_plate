@@ -17,6 +17,8 @@ class NorwayValidator extends GatedPlateValidator {
   static const String reasonEmbassy = 'The mission code is two digits.';
   static const String reasonCar = 'The sequence is three digits.';
 
+  static final RegExp _prefix = RegExp(r'^[ABCDEFHJKLNPRSTUVWXYZ]{2}$');
+
   @override
   PlateValidation judge(PlateEntry entry) {
     final String code = entry.group('code');
@@ -30,9 +32,7 @@ class NorwayValidator extends GatedPlateValidator {
       }
       return const PlateValidation.valid();
     }
-    if (!RegExp(
-      r'^[ABCDEFHJKLNPRSTUVWXYZ]{2}$',
-    ).hasMatch(entry.group('letters'))) {
+    if (!_prefix.hasMatch(entry.group('letters'))) {
       return const PlateValidation.invalid(reasonLetters);
     }
     final String number = entry.group('number');

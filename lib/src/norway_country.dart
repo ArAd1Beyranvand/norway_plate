@@ -6,8 +6,6 @@ import 'norway_colors.dart';
 /// Norway as a `PlateCountry`: the blue nationality stripe with the flag. The
 /// `N` beneath it is a [PlateLabel] on the spec, so [captionLines] is empty.
 /// The diplomatic plate has no stripe and sets `noPanel`.
-///
-/// The flag is the SVG asset (Wikimedia Commons `Flag_of_Norway.svg`).
 abstract final class NorwayCountry {
   static const PlateDrawing _flag = PlateDrawing(22, 16, <PlateShape>[
     PlateRectShape(0, 0, 22, 16, Color(0xFFBA0C2F)),
