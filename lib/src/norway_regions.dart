@@ -421,6 +421,5 @@ abstract final class NorwayRegions {
     return names.length == 1 ? names.single : null;
   }
 
-  static String? captionOf(String Function(String key) group) =>
-      lookup(group('letters'));
+  static String? captionOf(String Function(String key) group) => lookup(group('letters'));
 }
