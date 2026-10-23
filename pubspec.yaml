@@ -1,7 +1,7 @@
 name: norway_plate
 description: "Norway's licence plates for the plate_core library — regular and diplomatic plates, themes, alphabets and an advisory validator."
 version: 0.1.0
-publish_to: none
+repository: https://github.com/ArAd1Beyranvand/norway_plate
 resolution: workspace
 
 environment:
