@@ -8,11 +8,14 @@ void main() {
     expect(NorwayRegions.lookup('BL'), 'Akershus');
   });
 
-  test('a lone letter spanning counties, a split code and nothing name nothing', () {
-    for (final String code in <String>['', 'B', 'EX', 'QQ']) {
-      expect(NorwayRegions.lookup(code), isNull, reason: code);
-    }
-  });
+  test(
+    'a lone letter spanning counties, a split code and nothing name nothing',
+    () {
+      for (final String code in <String>['', 'B', 'EX', 'QQ']) {
+        expect(NorwayRegions.lookup(code), isNull, reason: code);
+      }
+    },
+  );
 
   test('the private plate follows the letters typed and deleted', () {
     final PlateController c = PlateController(spec: NorwayPlates.private);

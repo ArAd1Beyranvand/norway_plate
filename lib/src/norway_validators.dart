@@ -10,7 +10,8 @@ class NorwayValidator extends GatedPlateValidator {
   @override
   String get gateGroup => 'number';
 
-  static const String reasonLetters = 'The prefix is two letters (no G, I, M, O, Q).';
+  static const String reasonLetters =
+      'The prefix is two letters (no G, I, M, O, Q).';
   static const String reasonNumber = 'The number is four or five digits.';
   static const String reasonCode = 'The prefix is CD.';
   static const String reasonEmbassy = 'The mission code is two digits.';

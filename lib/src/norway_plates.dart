@@ -74,7 +74,12 @@ abstract final class NorwayPlates {
       id: 'no.private.$digits',
       stripe: true,
       slots: <PlateSlot>[
-        _group(NorwayAlphabets.letters, 2, _Layout.letterCx, _Layout.letterPitch),
+        _group(
+          NorwayAlphabets.letters,
+          2,
+          _Layout.letterCx,
+          _Layout.letterPitch,
+        ),
         _group(
           NorwayAlphabets.digits,
           digits,
@@ -94,8 +99,18 @@ abstract final class NorwayPlates {
   static final PlateSpec diplomatic = _spec(
     id: 'no.diplomatic',
     slots: <PlateSlot>[
-      _group(NorwayAlphabets.diplomaticLetters, 2, _Layout.dipLetterCx, _Layout.dipLetterPitch),
-      _group(NorwayAlphabets.digits, 2, _Layout.dipDigitCx, _Layout.dipDigitPitch),
+      _group(
+        NorwayAlphabets.diplomaticLetters,
+        2,
+        _Layout.dipLetterCx,
+        _Layout.dipLetterPitch,
+      ),
+      _group(
+        NorwayAlphabets.digits,
+        2,
+        _Layout.dipDigitCx,
+        _Layout.dipDigitPitch,
+      ),
       _group(
         NorwayAlphabets.digits,
         3,
@@ -113,13 +128,17 @@ abstract final class NorwayPlates {
 
   static List<PlateSpec> get all => <PlateSpec>[private, diplomatic];
 
-  static PlateSlot _group(PlateAlphabet alphabet, int count, double firstCx, double pitch) =>
-      PlateSlot(
-        alphabet: alphabet,
-        box: PlateBox(firstCx - pitch / 2, _Layout.top, count * pitch, _Layout.box),
-        length: count,
-        spacing: max(0, pitch - 0.6 * 0.72 * _Layout.box),
-      );
+  static PlateSlot _group(
+    PlateAlphabet alphabet,
+    int count,
+    double firstCx,
+    double pitch,
+  ) => PlateSlot(
+    alphabet: alphabet,
+    box: PlateBox(firstCx - pitch / 2, _Layout.top, count * pitch, _Layout.box),
+    length: count,
+    spacing: max(0, pitch - 0.6 * 0.72 * _Layout.box),
+  );
 
   static PlateSpec _spec({
     required String id,
@@ -134,14 +153,22 @@ abstract final class NorwayPlates {
     canvasHeight: _Layout.height,
     panel: stripe
         ? const PlatePanel(
-            box: PlateBox(_Layout.flagLeft, _Layout.flagTop, _Layout.flagWidth, _Layout.flagHeight),
+            box: PlateBox(
+              _Layout.flagLeft,
+              _Layout.flagTop,
+              _Layout.flagWidth,
+              _Layout.flagHeight,
+            ),
             padding: EdgeInsets.zero,
           )
         : const PlatePanel(box: PlateBox(0, 0, 0, 0)),
     noPanel: !stripe,
     background: stripe
         ? const PlateSection.columns(<PlatePart>[
-            PlatePart(PlateSection.fill(PlateFill.panel), end: _Layout.stripeEnd),
+            PlatePart(
+              PlateSection.fill(PlateFill.panel),
+              end: _Layout.stripeEnd,
+            ),
             PlatePart(PlateSection.plain),
           ])
         : PlateSection.plain,
@@ -150,7 +177,12 @@ abstract final class NorwayPlates {
       if (stripe)
         const PlateLabel(
           text: 'N',
-          box: PlateBox(_Layout.nLeft, _Layout.nTop, _Layout.nWidth, _Layout.nHeight),
+          box: PlateBox(
+            _Layout.nLeft,
+            _Layout.nTop,
+            _Layout.nWidth,
+            _Layout.nHeight,
+          ),
           glyphHeight: _Layout.nGlyph,
           color: NorwayColors.stripeInk,
         ),

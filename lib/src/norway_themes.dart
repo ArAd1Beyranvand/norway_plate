@@ -6,7 +6,11 @@ import 'norway_colors.dart';
 /// One ink on one field. The regular plate has a thin printed frame (about
 /// 1.5 of 110 in the photographs); the diplomatic photo shows none.
 abstract final class NorwayThemes {
-  static final PlateTheme private = _theme(NorwayColors.white, NorwayColors.black, border: 0.015);
+  static final PlateTheme private = _theme(
+    NorwayColors.white,
+    NorwayColors.black,
+    border: 0.015,
+  );
 
   static final PlateTheme diplomatic = _theme(
     NorwayColors.diplomaticBlue,
@@ -15,10 +19,11 @@ abstract final class NorwayThemes {
   );
 }
 
-PlateTheme _theme(Color field, Color ink, {required double border}) => PlateTheme.monochrome(
-  field: field,
-  ink: ink,
-  inactive: NorwayColors.inactive,
-  borderWidthRatio: border,
-  plateRadiusRatio: 0.06,
-);
+PlateTheme _theme(Color field, Color ink, {required double border}) =>
+    PlateTheme.monochrome(
+      field: field,
+      ink: ink,
+      inactive: NorwayColors.inactive,
+      borderWidthRatio: border,
+      plateRadiusRatio: 0.06,
+    );
