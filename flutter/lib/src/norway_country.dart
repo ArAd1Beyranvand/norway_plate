@@ -17,7 +17,6 @@ abstract final class NorwayCountry {
 
   static const PlateCountry norway = PlateCountry(
     code: 'no',
-    captionLines: <String>[],
     panelColor: NorwayColors.stripeBlue,
     panelTextColor: NorwayColors.stripeInk,
     flagAspectRatio: 22 / 16,

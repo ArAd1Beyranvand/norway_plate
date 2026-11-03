@@ -17,6 +17,4 @@ abstract final class NorwayColors {
 
   static const Color diplomaticBlue = Color(0xFF3EBDFF);
   static const Color diplomaticInk = Color(0xFFF8E746);
-
-  static const Color inactive = Color(0xFFB0B0B0);
 }

@@ -23,7 +23,6 @@ PlateTheme _theme(Color field, Color ink, {required double border}) =>
     PlateTheme.monochrome(
       field: field,
       ink: ink,
-      inactive: NorwayColors.inactive,
       borderWidthRatio: border,
       plateRadiusRatio: 0.06,
     );

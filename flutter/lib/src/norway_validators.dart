@@ -1,17 +1,11 @@
 import 'package:plate_core/plate_core.dart';
 
-// TODO(py): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(ts): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
-// TODO(kt): [D4-code] hand-port; reason strings are the contract, keep them byte-identical.
 /// Judges a Norwegian plate. A regular plate is two letters and four or five
 /// digits (`AB 12345`); a diplomatic plate is `CD`, a two-digit mission code
 /// and a three-digit sequence. Reports, never bars a keystroke; the one
 /// refusal is the restriction the diplomatic spec carries.
 class NorwayValidator extends GatedPlateValidator {
-  const NorwayValidator();
-
-  @override
-  String get gateGroup => 'number';
+  const NorwayValidator() : super('number');
 
   static const String reasonLetters =
       'The prefix is two letters (no G, I, M, O, Q).';
@@ -20,9 +14,6 @@ class NorwayValidator extends GatedPlateValidator {
   static const String reasonEmbassy = 'The mission code is two digits.';
   static const String reasonCar = 'The sequence is three digits.';
 
-  // TODO(py): [H9] Python re: \d/\w match Unicode; keep explicit [0-9]/[A-Z] classes (or re.ASCII).
-  // TODO(ts): [H9] same flavour as Dart; port as is, cover accept/reject in the vectors (D9).
-  // TODO(kt): [H9] Regex engine differs per target (JVM/JS/Native): keep to portable syntax.
   static final RegExp _prefix = RegExp(r'^[ABCDEFHJKLNPRSTUVWXYZ]{2}$');
 
   @override

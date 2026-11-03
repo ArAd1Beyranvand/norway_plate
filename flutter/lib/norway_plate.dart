@@ -4,9 +4,6 @@
 /// an advisory validator.
 library;
 
-// TODO(py): [D5] one module `plates.countries.norway`; assets via importlib.resources.
-// TODO(ts): [D5] one subpath export `./countries/norway`; tree-shakable.
-// TODO(kt): [D5] package `countries.norway` in the countries module.
 export 'src/norway_colors.dart';
 export 'src/norway_country.dart';
 export 'src/norway_plates.dart';

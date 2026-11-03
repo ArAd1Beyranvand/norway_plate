@@ -6,13 +6,24 @@ GO VEGAN 🌱
 
 From the mighty people of Iran to the steadfast people of Norway to view examples:
 
-https://platexample.ir/#/discover/norway
+https://platexample.ir/#/discover/norway:flutter
 
 # norway_plate
 
-Norway's licence plates for the `plate_core` library. Regular and diplomatic plates with their colours, themes, county lookup and an advisory validator.
+Norway's licence plates for the plate_core library — regular and diplomatic plates, themes, alphabets and an advisory validator.
 
-## Install
+## Languages
+
+| Language | Folder | Example |
+| --- | --- | --- |
+| Flutter / Dart | [`flutter/`](https://github.com/ArAd1Beyranvand/norway_plate/tree/main/flutter) | [platexample](https://platexample.ir/#/discover/norway:flutter) |
+| Kotlin | [`kotlin/`](https://github.com/ArAd1Beyranvand/norway_plate/tree/main/kotlin) | [platexample](https://platexample.ir/#/discover/norway:kotlin) |
+| Python | [`python/`](https://github.com/ArAd1Beyranvand/norway_plate/tree/main/python) | [platexample](https://platexample.ir/#/discover/norway:python) |
+| TypeScript | [`typescript/`](https://github.com/ArAd1Beyranvand/norway_plate/tree/main/typescript) | [platexample](https://platexample.ir/#/discover/norway:typescript) |
+
+## Quick start
+
+### Install
 
 ```yaml
 dependencies:
@@ -20,7 +31,7 @@ dependencies:
   norway_plate: ^0.1.0
 ```
 
-## Use
+### Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -35,12 +46,28 @@ PlateCanvas(
 );
 ```
 
-## Contains
+## Specs
 
-- `NorwayCountry` — country panel: `norway`.
-- `NorwayPlates` — 4 plate specs: `private`, `electric`, `diplomatic`, `privateFor()`.
-- `NorwayThemes` — 2 themes: `private`, `diplomatic`.
-- `NorwayValidator` — advisory validator; flags the frame, never blocks a keystroke.
+Each spec is one plate layout.
+
+- `NorwayPlates.private` — id `no.private.$digits`
+- `NorwayPlates.privateFor`(…)
+- `NorwayPlates.electric` — id `no.diplomatic`
+- `NorwayPlates.diplomatic` — id `no.diplomatic`
+
+## Themes
+
+- `NorwayThemes.private`
+- `NorwayThemes.diplomatic`
+
+## Change it
+
+`PlateCanvas` takes `spec:` (an entry of `NorwayPlates`) and `theme:` (an entry of `NorwayThemes`). Set `validator:` to `NorwayValidator()` and `autoValidate: true` to show validation hints.
+
+## Also included
+
+- `NorwayCountry` — the country panel.
+- `NorwayValidator` — the plate validator.
 - `NorwayRegions` — code table.
 
 ## Plates
@@ -63,3 +90,6 @@ dark plate with a bottom band and a roundel).
 
 Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
 
+## License
+
+See [LICENSE](https://github.com/ArAd1Beyranvand/norway_plate/blob/main/LICENSE).

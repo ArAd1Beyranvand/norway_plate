@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/widgets.dart' show EdgeInsets;
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
@@ -24,8 +22,7 @@ import 'norway_regions.dart';
 /// Ink is about 75 tall on a 110 plate; matching it would need a ~135 box, so
 /// every box is the canvas height and the ink lands near 58 (78% of reference).
 abstract final class _Layout {
-  static const double width = 520, height = 110;
-  static const double stripeEnd = 52;
+  static const double width = 520, height = 110, stripeEnd = 52;
 
   static const double box = 110, top = 0;
 
@@ -87,10 +84,7 @@ abstract final class NorwayPlates {
           _Layout.digitPitch,
         ),
       ],
-      groups: <PlateTextGroup>[
-        const PlateTextGroup(<int>[0], key: 'letters'),
-        const PlateTextGroup(<int>[1], key: 'number'),
-      ],
+      groups: PlateTextGroup.perSlot(<String>['letters', 'number']),
     );
   }
 
@@ -118,11 +112,7 @@ abstract final class NorwayPlates {
         _Layout.dipDigitPitch,
       ),
     ],
-    groups: const <PlateTextGroup>[
-      PlateTextGroup(<int>[0], key: 'code'),
-      PlateTextGroup(<int>[1], key: 'embassy'),
-      PlateTextGroup(<int>[2], key: 'number'),
-    ],
+    groups: PlateTextGroup.perSlot(<String>['code', 'embassy', 'number']),
     restrictions: const <PlateRestriction>[israel],
   );
 
@@ -133,11 +123,13 @@ abstract final class NorwayPlates {
     int count,
     double firstCx,
     double pitch,
-  ) => PlateSlot(
-    alphabet: alphabet,
-    box: PlateBox(firstCx - pitch / 2, _Layout.top, count * pitch, _Layout.box),
-    length: count,
-    spacing: max(0, pitch - 0.6 * 0.72 * _Layout.box),
+  ) => plateRun(
+    alphabet,
+    count,
+    left: firstCx - pitch / 2,
+    top: _Layout.top,
+    pitch: pitch,
+    height: _Layout.box,
   );
 
   static PlateSpec _spec({
