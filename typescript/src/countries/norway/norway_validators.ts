@@ -1,4 +1,4 @@
-import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, isDigits, isDigitsOfLength, valid } from '../../core/validators/plate_validator';
+import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, isDigits, isDigitsOfLength, valid } from 'plate_core/core/validators/plate_validator';
 
 /** Judges a Norwegian plate. A regular plate is two letters and four or five
  * digits (`AB 12345`); a diplomatic plate is `CD`, a two-digit mission code
